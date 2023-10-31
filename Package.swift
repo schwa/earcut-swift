@@ -8,15 +8,16 @@ let package = Package(
         .library(name: "earcut", targets: ["earcut"]),
     ],
     targets: [
-        .executableTarget(name: "demo"),
+        .executableTarget(name: "demo",
+            dependencies: ["earcut"],
+            swiftSettings: [.interoperabilityMode(.Cxx)]
+        ),
         .target(name: "earcut",
             dependencies: ["earcut_cpp"],
-            swiftSettings: [.interoperabilityMode(.Cxx)]),
+            swiftSettings: [.interoperabilityMode(.Cxx)]
+        ),
         .target(name: "earcut_cpp",
-            dependencies: ["earcut_bridge"],
             exclude: ["earcut.hpp/test", "earcut.hpp/glfw"]
-            ),
-        .target(name: "earcut_bridge",
-            swiftSettings: [.interoperabilityMode(.Cxx)]),
+        ),
     ]
 )
