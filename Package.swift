@@ -4,6 +4,9 @@ import PackageDescription
 
 let package = Package(
     name: "earcut-swift",
+    platforms: [
+        .macOS(.v14),
+    ],
     products: [
         .library(name: "earcut", targets: ["earcut"]),
     ],

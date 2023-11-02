@@ -15,9 +15,8 @@ public func earcut(polygons: [[SIMD2<Float>]]) -> [UInt32] {
         }
         cpp_polygons.push_back(cpp_polygon)
     }
-    let indices = mapbox.earcut_simd(cpp_polygons)
-    print(indices)
-    return []
+    let indices: mapbox.Indices = mapbox.earcut_simd(cpp_polygons)
+    return Array(indices)
 }
 
 

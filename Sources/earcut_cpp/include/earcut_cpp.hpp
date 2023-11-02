@@ -32,9 +32,9 @@ struct nth<1, simd_float2> {
 
 using Polygon = std::vector<simd_float2>;
 using Polygons = std::vector<Polygon>;
+using Indices = std::vector<uint32_t>;
 
-template <typename N = uint32_t>
-std::vector<N> earcut_simd(const Polygons& poly) {
+Indices earcut_simd(const Polygons& poly) {
     return earcut(poly);
 }
 
