@@ -16,7 +16,12 @@ public func earcut(polygons: [[SIMD2<Float>]]) -> [UInt32] {
         cpp_polygons.push_back(cpp_polygon)
     }
     let indices: mapbox.Indices = mapbox.earcut_simd(cpp_polygons)
+    // VisionOS SDK doesn't seem to have a way to auto-convert a C++ std::vector into a Swift.Array.
+    #if os(visionOS)
+    return (0..<indices.size()).map { indices[$0] }
+    #else
     return Array(indices)
+    #endif
 }
 
 
